@@ -144,6 +144,7 @@ Agents can talk to each other, coordinate on tasks, and chain workflows — all 
 - [Architecture](docs/ARCHITECTURE.md) — system design, data flow, components
 - [Offices](docs/OFFICES.md) — building structure and office details
 - [Agents](docs/AGENTS.md) — all 17 agents with roles and responsibilities
+- [Workflows](docs/WORKFLOWS.md) — 15 workflow templates, cron scheduling, template variables
 
 ## License
 
