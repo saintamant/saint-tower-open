@@ -4,14 +4,12 @@ import { buildingLayout } from '../layout/buildingLayout';
 import { createAllFurniture } from '../drawing/pokemonFurniture';
 import { Room } from './Room';
 import { AgentSprite } from './AgentSprite';
-import { RoofSign } from './RoofSign';
 import type { PokemonAssets } from '../drawing/spriteLoader';
 
 export class Building extends Container {
   agentSprites: Map<string, AgentSprite> = new Map();
   juanSprite: AgentSprite | null = null;
   private rooms: Map<string, Room> = new Map();
-  private roofSign: RoofSign;
 
   constructor(agents: Agent[], assets: PokemonAssets | null = null) {
     super();
@@ -21,10 +19,6 @@ export class Building extends Container {
 
     // Create agent lookup
     const agentMap = new Map(agents.map(a => [a.id, a]));
-
-    // Roof sign
-    this.roofSign = new RoofSign();
-    this.addChild(this.roofSign);
 
     // Layer 1: Room backgrounds (floors + walls) — now Container-based
     for (const roomLayout of buildingLayout.rooms) {
@@ -121,6 +115,5 @@ export class Building extends Container {
     for (const room of this.rooms.values()) {
       room.update(deltaTime);
     }
-    this.roofSign.update(deltaTime);
   }
 }

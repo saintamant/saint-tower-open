@@ -3,7 +3,7 @@ import { BuildingLayout, RoomLayout, FurniturePlacement, AgentPlacement } from '
 // Canvas: 980x660 — 3 rows of offices
 const ROOM_GAP = 6;
 const LEFT_MARGIN = 30;
-const TOP_MARGIN = 70; // space for roof sign
+const TOP_MARGIN = 10;
 
 // ── Top row: SAINT private office | SA Core | Lab ──
 
@@ -112,50 +112,48 @@ const furniture: FurniturePlacement[] = [];
 
 // ── Agent positions ──
 const agents: AgentPlacement[] = [
-  // Juan — in private SAINT office
-  { agentId: 'juan',             position: { x: 78, y: 168 }, roomId: 'saint' },
-  // Manager — in SAINT office next to Juan
-  { agentId: 'manager',          position: { x: 135, y: 148 }, roomId: 'saint' },
-  // OpenClawBot — Telegram bot in SAINT office
-  { agentId: 'openclaw-bot',     position: { x: 55, y: 128 }, roomId: 'saint' },
-  // SA Core agents — spread across 474px wide room
-  { agentId: 'sa-main',         position: { x: SA_CORE_X + 60,  y: 190 }, roomId: 'sa-core' },
-  { agentId: 'content-writer',  position: { x: SA_CORE_X + 170, y: 198 }, roomId: 'sa-core' },
-  { agentId: 'outreach',        position: { x: SA_CORE_X + 280, y: 192 }, roomId: 'sa-core' },
-  { agentId: 'proposals',       position: { x: SA_CORE_X + 390, y: 185 }, roomId: 'sa-core' },
+  // SAINT room
+  { agentId: 'juan',            position: { x: 78,  y: 175 }, roomId: 'saint' },
+  { agentId: 'openclaw-bot',    position: { x: 45,  y: 92 },  roomId: 'saint' },
+  { agentId: 'manager',         position: { x: 150, y: 85 },  roomId: 'saint' },
 
-  // Lab agents
-  { agentId: 'lab-bot',         position: { x: LAB_X + 85,  y: 210 }, roomId: 'lab' },
+  // SA Core — spread across 474px wide room
+  { agentId: 'sa-main',         position: { x: SA_CORE_X + 100, y: 155 }, roomId: 'sa-core' },
+  { agentId: 'content-writer',  position: { x: SA_CORE_X + 195, y: 128 }, roomId: 'sa-core' },
+  { agentId: 'outreach',        position: { x: SA_CORE_X + 305, y: 132 }, roomId: 'sa-core' },
+  { agentId: 'proposals',       position: { x: SA_CORE_X + 420, y: 105 }, roomId: 'sa-core' },
 
-  // Project A — own office (third row)
-  { agentId: 'agent-a1',        position: { x: LEFT_MARGIN + 80,  y: THIRD_Y + 110 }, roomId: 'project-a' },
-  { agentId: 'agent-a2',        position: { x: LEFT_MARGIN + 180, y: THIRD_Y + 110 }, roomId: 'project-a' },
+  // Lab
+  { agentId: 'lab-bot',         position: { x: LAB_X + 130, y: 172 }, roomId: 'lab' },
 
-  // Project B — own office (third row)
-  { agentId: 'agent-b1',        position: { x: LEFT_MARGIN + 280 + ROOM_GAP + 70,  y: THIRD_Y + 110 }, roomId: 'project-b' },
-  { agentId: 'agent-b2',        position: { x: LEFT_MARGIN + 280 + ROOM_GAP + 150, y: THIRD_Y + 110 }, roomId: 'project-b' },
-
-  // Project C — two agents
-  { agentId: 'agent-c1',        position: { x: 65,  y: 362 }, roomId: 'project-c' },
-  { agentId: 'agent-c2',        position: { x: 175, y: 348 }, roomId: 'project-c' },
+  // Project C
+  { agentId: 'agent-c1',        position: { x: 55,  y: 352 }, roomId: 'project-c' },
+  { agentId: 'agent-c2',        position: { x: 165, y: 335 }, roomId: 'project-c' },
 
   // Project D
-  { agentId: 'agent-d1',        position: { x: 325, y: 365 }, roomId: 'project-d' },
+  { agentId: 'agent-d1',        position: { x: 340, y: 358 }, roomId: 'project-d' },
 
-  // Project E — two agents
-  { agentId: 'agent-e1',  position: { x: 545, y: 362 }, roomId: 'project-e' },
-  { agentId: 'agent-e2',  position: { x: 640, y: 362 }, roomId: 'project-e' },
+  // Project E
+  { agentId: 'agent-e1',        position: { x: 555, y: 342 }, roomId: 'project-e' },
+  { agentId: 'agent-e2',        position: { x: 635, y: 305 }, roomId: 'project-e' },
 
   // Library
-  { agentId: 'learn-bot',      position: { x: LIB_X + 75, y: 365 }, roomId: 'library' },
+  { agentId: 'learn-bot',       position: { x: LIB_X + 90, y: 335 }, roomId: 'library' },
+
+  // Project A (third row)
+  { agentId: 'agent-a1',        position: { x: LEFT_MARGIN + 75,  y: THIRD_Y + 118 }, roomId: 'project-a' },
+  { agentId: 'agent-a2',        position: { x: LEFT_MARGIN + 175, y: THIRD_Y + 118 }, roomId: 'project-a' },
+
+  // Project B (third row)
+  { agentId: 'agent-b1',        position: { x: LEFT_MARGIN + 280 + ROOM_GAP + 75,  y: THIRD_Y + 112 }, roomId: 'project-b' },
+  { agentId: 'agent-b2',        position: { x: LEFT_MARGIN + 280 + ROOM_GAP + 155, y: THIRD_Y + 112 }, roomId: 'project-b' },
 ];
 
 export const buildingLayout: BuildingLayout = { rooms, furniture, agents };
 
 // Base (unscaled) dimensions — used for layout coordinates
 export const CANVAS_WIDTH = 980;
-export const CANVAS_HEIGHT = 660;
-export const ROOF_Y = TOP_MARGIN - 40;
+export const CANVAS_HEIGHT = 600;
 
 // Scale factor — enlarges everything so interior elements are readable
 export const BUILDING_SCALE = 1.4;

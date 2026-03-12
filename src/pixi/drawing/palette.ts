@@ -3,8 +3,8 @@
 
 export const PALETTE = {
   // Background — deep dark void between rooms
-  bgDark: 0x1c2128,
-  bgVoid: 0x161b22,
+  bgDark: 0x050505,
+  bgVoid: 0x050505,
 
   // Walls — much darker, higher contrast (Gather thick walls)
   wallFace: 0x3d3d50,

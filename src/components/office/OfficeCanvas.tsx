@@ -29,7 +29,7 @@ interface OfficeCanvasProps {
 
 export default function OfficeCanvas({ agents, offices, onAgentClick, workingAgentIds, unreadAgentIds, messagingEvents }: OfficeCanvasProps) {
   return (
-    <div className="h-full flex items-center justify-center bg-bg-dark overflow-auto">
+    <div className="h-full flex items-start justify-center bg-bg-dark overflow-auto">
       <PixiApplication agents={agents} offices={offices} onAgentClick={onAgentClick} workingAgentIds={workingAgentIds} unreadAgentIds={unreadAgentIds} messagingEvents={messagingEvents} />
     </div>
   );

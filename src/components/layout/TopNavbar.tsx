@@ -99,8 +99,8 @@ export function TopNavbar({
 
   return (
     <header className="shrink-0 sticky top-0 z-50 h-14 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="grid h-full w-full grid-cols-[auto_1fr_auto] items-center gap-4 px-4">
-        {/* Left: Logo + Nav */}
+      <div className="grid h-full w-full grid-cols-[1fr_auto_1fr] items-center gap-4 px-4">
+        {/* Left: Logo */}
         <div className="flex items-center gap-2.5 shrink-0">
           <button onClick={() => onViewChange('office')} className="flex items-center gap-2.5 shrink-0 cursor-pointer">
             <div className="flex h-7 w-7 items-center justify-center rounded-md bg-accent font-mono text-xs font-bold text-accent-foreground">
@@ -112,10 +112,8 @@ export function TopNavbar({
           </button>
         </div>
 
-        {/* Center: Nav links */}
-        <div className="flex items-center justify-center gap-3 min-w-0">
-          <Separator orientation="vertical" className="h-5 shrink-0" />
-          <nav className="flex items-center gap-3">
+        {/* Center: Nav links — truly centered on page */}
+        <nav className="flex items-center gap-3">
             {navLinks.map((link) => {
               const active = isNavActive(link);
               return (
@@ -134,8 +132,7 @@ export function TopNavbar({
                 </Button>
               );
             })}
-          </nav>
-        </div>
+        </nav>
 
         {/* Right: Status + Actions + Profile */}
         <div className="flex items-center justify-end gap-2 shrink-0">
